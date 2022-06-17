@@ -1,0 +1,4 @@
+# Comentarionado node_moduless
+/node_modules
+# comentariando .env
+.env

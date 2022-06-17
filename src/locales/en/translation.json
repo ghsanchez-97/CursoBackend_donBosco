@@ -1,0 +1,9 @@
+{
+    "joi": {
+        "auth": {}
+    },
+    "controllers": {
+        "error" : "your request cannot be processed",
+        "success" : "your request has been processed correctly"
+    }
+}
