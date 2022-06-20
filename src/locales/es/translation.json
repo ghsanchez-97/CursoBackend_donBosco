@@ -1,6 +1,11 @@
 {
     "joi": {
-        "auth": {}
+        "auth": {
+            "email": {
+                "string.email": "formato de correo electronico incorrecto",
+                "string.base": "formato de correo electronico debe ser una cadena de texto"
+            }
+        }
     },
     "controllers": {
         "error" : "su petición no puede ser procesada",

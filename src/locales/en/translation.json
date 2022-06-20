@@ -1,6 +1,11 @@
 {
     "joi": {
-        "auth": {}
+        "auth": {
+            "email": {
+                "string.email": "wrong email format",
+                "string.base": "email format must be a text string"
+            }
+        }
     },
     "controllers": {
         "error" : "your request cannot be processed",

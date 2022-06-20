@@ -1,3 +1,5 @@
+import { ApiError } from '../hooks/http/type-response'
+
 const onlyBody = async ({ schema, node, req }) => {
   try {
     await schema.validateAsync(req.body, { abortEarly: false, allowUnknown: true, stripUnknown: true })
@@ -27,7 +29,7 @@ class RequestValitionStrategy {
       props.next()
     } catch (error) {
       console.log(error)
-      props.next()
+      props.next(ApiError.unprocessableEntity(error, { action: false }))
     }
   }
 }

@@ -3,8 +3,10 @@ import helmet from 'helmet'
 import cors from 'cors'
 import { json, urlencoded } from 'express'
 import i18next from 'i18next'
-import Backend from 'i18next-node-fs-backend'
+import Backend from 'i18next-fs-backend'
 import middleware from 'i18next-http-middleware'
+import { httpResponseHandler } from '../hooks/http/http-response'
+import { ApiError } from '../hooks/http/type-response'
 
 export default async (app, routes = []) => {
   if (!app || !Array.isArray(routes)) {
@@ -33,5 +35,11 @@ export default async (app, routes = []) => {
       app.use(path, controller)
     }
   }
+  //
+  app.use((req, res, next) => {
+    const error = new Error('Internal server error Guy')
+    next(ApiError.internal(error.message))
+  })
+  app.use(httpResponseHandler)
   return app
 }
